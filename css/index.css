@@ -1,0 +1,150 @@
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#game {
+    position: fixed;
+    height: inherit;
+    width: inherit;
+}
+
+#game.isOver .gameContainer{
+    filter: grayscale(100%);
+}
+
+#game.isOver .bird{
+    animation: overbird 1s ease-in forwards;
+}
+
+#game.start .bird{
+    display: block;
+}
+
+#game.start .meun .start{
+    display: none;
+}
+
+#game.isOver .meun .start{
+    color: #d32f02;
+}
+
+#game.start.isOver .meun {
+    display: block;
+}
+
+@keyframes overbird {
+    to {
+        transform: translateY(100vh) rotateZ(60deg);
+    }
+}
+
+
+
+#game .show {
+    height: 200px;
+    background-color: rgba(0,0,0,.2);
+    width: 30px;
+    position: fixed;
+}
+
+.meun {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    /* background: rgba(0,0,0,.2); */
+    z-index: 99;
+}
+
+.meun .start {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    width: 200px;
+    height: 150px;
+    padding-top: 120px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    transform: translate(-50%, -100%);
+    background: url(../images/bird1.png) center no-repeat;
+    background-position-y: 76px;
+    animation: flyStart 1s ease-in-out infinite;
+}
+
+.meun .start span{
+    cursor: pointer;
+    animation: blink 1s ease-in-out infinite;
+    user-select: none;
+}
+
+.meun .start.hidden {
+    display: none;
+}
+
+.meun #success{
+    font-size: 2.5rem;
+    position: absolute; 
+    top: 10vh;
+    left: 50%;
+    color: #fff;
+    transform: translateX(-50%);
+    user-select: none;
+}
+
+@keyframes flyStart {
+    50% {
+        background-position-y: 0px;
+    }
+    to {
+        background-position-y: 76px;
+    }
+}
+
+@keyframes blink {
+    50% {
+        font-size: 1.25rem;
+    }
+    to {
+        font-size: 1rem;
+        /* color: yellowgreen; */
+    }
+}
+
+.gameContainer {
+    position: relative;
+    height: 100vh;
+    background: url(../images/sky.png) center/cover no-repeat;
+    /* background-color: rgba(0, 0, 0, .2); */
+}
+
+.gameContainer .pipe {
+    position: absolute;
+    left: 20em;
+    height: 200px;
+    width: 56px;
+    padding: 420px 0;
+    transform: translateY(calc(50vh - 520px));
+    background-color: rgba(0,0,0,.2);
+    background: url(../images/pipe1.png) no-repeat,
+                url(../images/pipe2.png) no-repeat;
+                
+    background-position-y: 620px, 0 ;
+}
+
+.gameContainer #bird {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50vh;
+    left: 40vw;
+    z-index: 999;
+    background: url(../images/bird1.png);    
+}
+
+.gameContainer #bird.hidden {
+    display: none;
+}
